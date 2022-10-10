@@ -1,8 +1,9 @@
-## Wochenbericht :
+## Wochenbericht
+
 | **Name der Auszubildende :** | Housni Zalam |
 |:--------|:--------|
-| **Ausbildungsjahr :** | Erstes Jahr |   
-| **Ausbildungsbereich :** | Fachinformatiker Anwendungsentwicklung |   
+| **Ausbildungsjahr :** | Erstes Jahr |
+| **Ausbildungsbereich :** | Fachinformatiker Anwendungsentwicklung |
 | **Ausbildungswoche :** | **vom** : 26.09.2022 **bis** : 30.09.2022 |
 
 &nbsp;
@@ -18,13 +19,15 @@
 &nbsp;
 
 &nbsp;
-* **Datum und Unteschrift des Auszubildenden** :    
+
+* **Datum und Unteschrift des Auszubildenden** :
 &nbsp;
 &nbsp;
 
 **_____________________________________________**
 &nbsp;
 &nbsp;
+
 * **Datum und Unteschrift des Ausbilders** :
 &nbsp;
 &nbsp;
