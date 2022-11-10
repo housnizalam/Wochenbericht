@@ -46,12 +46,46 @@ SELECT Teilnehmers.noten , COALESCE(Teilnehmers.noten,0) as noten FROM Teilnehme
 /*SELECT marken.* , autos.hersteller FROM marken
 INNER JOIN autos on marken.m_hersteller=autos.id*/
 
+TINYINT : - 128 => 127 
+SMALLINT : -32768 => 32767
+MEDIUMINT : - 8388608 => 8388607
+INT : -2147483648 => 2147483647
+/* es ist total wichtig diese werte zubenutzen um die grosse der Databank so klein wie öglich zu machen weil grosse kostet Geld*/
+/* Vergleich zwichen VARCHAR und CHAR als Datatype : 
+VARCHAR benutzt dynamic Memory das heißt es konsumiert nur die grosse die er wirklich braucht 
+aber der CHAR benutzt static Memory konsumiert die gantze mögliche Memory die er hat 
+andereseits CHAR ist viel schneller als VARCHAR weil static Memory viel schneller als dynamic ist 
+Wenn man weißt gennau die Grosse die man braucht dann ist CHAR besser sondern ist VARCHAR besser*/
+/* Vergleich zwichen ENUM und SET als Datatype : 
+Die Beide sind wie eine drop List ... aber mit ENUM kann man nur eine Wahl wählen aber mit SET kann man mehrere*/
 
+CREATE DATABASE project ;                     /* Ein Database die heißt project erstellen*/
+DROP DATABASE project ;                       /* das Database das heißt project löschen*/
 
+/* betrachten wir haben ein Tabelle der heißt categories */
+/* wir wollen eine Tabelle der heißt items durch code erstellen deren i_category hat eine Relation mit dem id von der categories Tabelle */
+CREATE TABLE items (                            
+    ColumnName Datatype Constraint ,            /* jede Tabelle bestät aus mehrer Spalten und jede Spalte mus ein Name unr Type haben und Vorraussetzungen wenn nötig */                      
+    i_id int(11) not NULL AUTO_INCREMENT ,
+    i_name varchar(255) not NULL ,
+    i_price float ,
+    i_category int (11)
+    /* nach dem Spalten können wir Primary KEY und FOREIGN KEY wenn nötig erstellen */
+    Primary KEY (i_id)
+    FOREIGN KEY (i_category) REFERENCES categories (c_id), 
+  );
 
+  DROP TABLE items ;                         /* die Tabelle items löschen */                         
 
+ALTER TABLE items MODIFY c_name CHAR         /* so ändert man das Type der Spalte */
+ALTER TABLE items DROP c_name CHAR           /* so löscht man die Spalte */
+ALTER TABLE items ADD c_name CHAR            /* eine Spalte addieren */
+ALTER TABLE items ADD UNIQUE(c_name)         /* so addiert man Vorraussetzungen */
+ALTER TABLE items DROP INDEX c_name          /* so löscht man eine Voraussetzung */
 
-
+CREATE VIEW erfolgreicheTeilnehmern
+AS
+SELECT Teilnehmers.* FROM Teilnehmers WHERE noten > 49  /* so erstllt man eine View die aus die erfolgreiche Teilnehmern bestäht */
 
 
 
