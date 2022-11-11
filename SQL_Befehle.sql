@@ -42,11 +42,11 @@ SELECT name , SUM(noten) FROM Teilnehmers GROUP BY name    /* es gibt uns sie Su
 SELECT name , AVG(noten) AS notensumme FROM Teilnehmers GROUP BY id HAVING notensumme >49  /* es gibt uns die Namen deren notensumme grosser als 49 (bestanden) : AS schaft eine neue Liste deren name notensumme ist aber diese Liste temporar ist */
 SELECT Teilnehmers.noten , IFNULL(Teilnehmers.noten,0) as noten FROM Teilnehmers /* fals noten = null (der teilnehmer ist zur Prüfung nicht gekommen) dann noten =0 */
 SELECT Teilnehmers.noten , COALESCE(Teilnehmers.noten,0) as noten FROM Teilnehmers /* fals noten = null (der teilnehmer ist zur Prüfung nicht gekommen) dann noten =0 */
+CREATE VIEW erfolgreicheTeilnehmern
+AS
+SELECT Teilnehmers.* FROM Teilnehmers WHERE noten > 49  /* so erstllt man eine View die aus die erfolgreiche Teilnehmern bestäht */
 /* Das Unterschied zwischen Primary und Unique ist : erstens nur eine Spalte des Tabels kann Primay werden aber viel Spalte können Unique sein zweitens Primary kann nicht Null sein aber Unique kann */
-SELECT marken.name , autos.hersteller FROM autos , marken WHERE marken.m_hersteller=autos.id
 
-SELECT marken.* , autos.hersteller FROM marken
-INNER JOIN autos on marken.m_hersteller=autos.id
 
 TINYINT : - 128 => 127 
 SMALLINT : -32768 => 32767
@@ -85,9 +85,17 @@ ALTER TABLE items ADD c_name CHAR            /* eine Spalte addieren */
 ALTER TABLE items ADD UNIQUE(c_name)         /* so addiert man Vorraussetzungen */
 ALTER TABLE items DROP INDEX c_name          /* so löscht man eine Voraussetzung */
 
-CREATE VIEW erfolgreicheTeilnehmern
-AS
-SELECT Teilnehmers.* FROM Teilnehmers WHERE noten > 49  /* so erstllt man eine View die aus die erfolgreiche Teilnehmern bestäht */
+
+/* betrachten wir haben zwei Tabelle 
+ Autos Tabelle dere besteht aus zwei Spalten : id und hersteller
+ Marken Tabelle besteht aus drei Spalten : m_id und marke und m_herstellr
+ wir wollen eine neue Tabelle die gibt usn die marke von Auto und Ihr Hersteller erstellen
+ es gibt zwei möglichkeiten :
+ */
+SELECT marken.name , autos.hersteller FROM autos , marken WHERE marken.m_hersteller=autos.id
+/*oder*/
+SELECT marken.* , autos.hersteller FROM marken
+INNER JOIN autos on marken.m_hersteller=autos.id
 
 
 
