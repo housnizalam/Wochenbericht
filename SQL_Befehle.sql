@@ -17,7 +17,8 @@ INSERT INTO Teilnehmers (id,name,vorname,alter,adresse,email,noten,nationalität
                                                             // so fügt man ein Teilnehmer ein
 INSERT INTO Teilnehmers (id,name,vorname,alter,adresse,email,noten)VALUES(NULL,'z','h',20,'Kasseler Straße 30','z.h.15@gmail.com',75,'Syrer' ),(NULL,'z','h',20,'Kasseler Straße 30','z.h.15@gmail.com',75 ,'Deutscher'),(NULL,'z','h',20,'Kasseler Straße 30','z.h.15@gmail.com',75,'Costarica' )
                                                             /* so kann man mehrere Teinehmern einfügen*/
-UPDATE Teilnehmers SET alter =alter+1 WHERE alter=15        /* so kann ich die informationen von Teinehmern ändern : in diesem Beispiel werden die alle Teinehmern die 15 Jahr alt sind ein Jahr grosser*/
+
+       /* so kann ich die informationen von Teinehmern ändern : in diesem Beispiel werden die alle Teinehmern die 15 Jahr alt sind ein Jahr grosser*/
 UPDATE Teilnehmers SET noten =noten+1 WHERE vorname='housni'  /* so bekommen die alle Teinehmern die housni heißen 10 noten mehr ;-) */
 SELECT DISTINCT nationalität FROM Teilnehmers                      /* es vermeidet die abermalige Ergebnisse : DISTINCT */
 DELETE * FROM Teilnehmers WHERE noten < 40                    /* es löscht die Teinehmern deren Noten kleiner als 40 sind */
